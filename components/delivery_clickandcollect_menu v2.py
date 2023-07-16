@@ -1,7 +1,5 @@
 # menu allowing user to choose between delivery or click and collect
 
-# bug - make it only accept 1 or 2
-
 print("Do you want your cake to be delivered, or will you be picking it up?")
 
 print("For delivery, enter 1")
