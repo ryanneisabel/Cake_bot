@@ -4,6 +4,10 @@ from random import randint
 # list of random names
 names = ["Nadia","Alissa","Courtney","Mia","Emma","Jasper","Loui","Harry","Joe","Zachary"]
 
+# customer details dictionary
+customer_details = {}
+
+# welcome message with random name
 def welcome():
     '''
     Purpose: To generate a random name from the list and print out a welcome message
