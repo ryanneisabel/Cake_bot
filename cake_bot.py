@@ -7,6 +7,16 @@ names = ["Nadia","Alissa","Courtney","Mia","Emma","Jasper","Loui","Harry","Joe",
 # customer details dictionary
 customer_details = {}
 
+# validates input to check if left blank
+def not_blank(question):
+    valid = False
+    while not valid: 
+        response = input(question)
+        if response != "":
+            return response.title()
+        else:
+            print("This cannot be blank ")
+
 # welcome message with random name
 def welcome():
     '''
@@ -44,6 +54,17 @@ def order_type():
             print("This is not a valid input")
             print("Please enter 1 or 2 ")
 
+# click and collect information - name and phone number
+def clickandcollect_info():
+    question = ("Please enter your name ")
+    customer_details['name'] = not_blank(question )
+    print(customer_details['name'])
+
+    question = ("Please enter your phone number ")
+    customer_details['phone'] = not_blank(question )
+    print(customer_details['phone'])
+
+
 
 
 
@@ -58,6 +79,7 @@ def main():
 
     welcome()
     order_type()
+    clickandcollect_info()
 
 main()
 
