@@ -43,16 +43,44 @@ def order_type():
             if delivery >= 1 and delivery <= 2:
                 if delivery == 1:
                     print("Delivery")
+                    delivery_info()
                     break
 
                 elif delivery == 2:
                     print("Click and Collect")
+                    clickandcollect_info()
                     break
             else:
                 print("The number must be 1 or 2")
         except ValueError:
             print("This is not a valid input")
             print("Please enter 1 or 2 ")
+
+# delivery information - name, address, and phone number
+def delivery_info():
+    question = ("Please enter your name ")
+    customer_details['name'] = not_blank(question )
+    print(customer_details['name'])
+
+    question = ("Please enter your phone number ")
+    customer_details['phone'] = not_blank(question )
+    print(customer_details['phone'])
+
+    question = ("Please enter your house number ")
+    customer_details['house'] = not_blank(question )
+    print(customer_details['house'])
+
+
+    question = ("Please enter your street name ")
+    customer_details['street'] = not_blank(question )
+    print(customer_details['street'])
+
+
+    question = ("Please enter your suburb ")
+    customer_details['suburb'] = not_blank(question )
+    print(customer_details['suburb'])
+    print(customer_details)
+      
 
 # click and collect information - name and phone number
 def clickandcollect_info():
@@ -63,6 +91,12 @@ def clickandcollect_info():
     question = ("Please enter your phone number ")
     customer_details['phone'] = not_blank(question )
     print(customer_details['phone'])
+    print(customer_details)
+
+
+
+
+
 
 
 
@@ -79,7 +113,8 @@ def main():
 
     welcome()
     order_type()
-    clickandcollect_info()
+    
+
 
 main()
 
