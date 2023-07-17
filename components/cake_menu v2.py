@@ -13,5 +13,5 @@ number_cakes = 12
 # num_cakes = int(input())
 
 for count in range (number_cakes):
-    print(count,cake_names[count],cake_prices[count])
+    print("{} {} ${:.2f}" .format(count+1,cake_names[count],cake_prices[count]))
 
