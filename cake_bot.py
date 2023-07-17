@@ -3,6 +3,13 @@ from random import randint
 
 # list of random names
 names = ["Nadia","Alissa","Courtney","Mia","Emma","Jasper","Loui","Harry","Joe","Zachary"]
+# list of cake names
+cake_names = ['Vanilla Cake','Chocolate Cake','Strawberry Cake','Caramel Cake',
+              'Red Velvet Cake','Carrot Cake','Lemon Cake' ,'Ice Cream Cake',
+              'Vanilla Mousse Cake','Chocolate Mousse Cake','Black Forest Cake','Blueberry Cake']
+# list of cake prices
+cake_prices = [35, 35, 39.90, 39.90, 39.90, 39.90,
+               39.90, 39.90, 39.90, 45, 49.90, 49.90]
 
 # customer details dictionary
 customer_details = {}
@@ -93,6 +100,12 @@ def clickandcollect_info():
     print(customer_details['phone'])
     print(customer_details)
 
+# cake menu
+def menu():
+    number_cakes = 12
+    for count in range (number_cakes):
+        print("{} {} ${:.2f}" .format(count+1,cake_names[count],cake_prices[count]))
+
 
 
 
@@ -113,6 +126,7 @@ def main():
 
     welcome()
     order_type()
+    menu()
     
 
 
