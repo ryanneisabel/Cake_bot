@@ -20,7 +20,17 @@ menu()
 
 # ask for total number of cakes for order
 num_cakes = 0
-num_cakes = int(input("How many cakes do you want to order? "))
+
+while True: 
+    try: 
+        num_cakes = int(input("How many cakes do you want to order? "))
+        if num_cakes >= 1 and num_cakes <= 12:
+            break
+        else:
+            print("Your order must be between 1 and 12 ")
+    except ValueError:
+        print("This is not a valid number ")
+        print("Please enter a number between 1 and 12")
 
 print(num_cakes)
 
@@ -33,8 +43,7 @@ for item in range(num_cakes):
         order_cost.append(cake_prices[cakes_ordered])
         num_cakes = num_cakes-1
 
-print(order_list)
-print(order_cost)
+
 
 
 

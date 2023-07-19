@@ -10,6 +10,10 @@ cake_names = ['Vanilla Cake','Chocolate Cake','Strawberry Cake','Caramel Cake',
 # list of cake prices
 cake_prices = [35, 35, 39.90, 39.90, 39.90, 39.90,
                39.90, 39.90, 39.90, 45, 49.90, 49.90]
+# list to store order list
+order_list = []
+# list to store order cost 
+order_cost = []
 
 # customer details dictionary
 customer_details = {}
@@ -100,12 +104,42 @@ def clickandcollect_info():
     print(customer_details['phone'])
     print(customer_details)
 
-# cake menu
 def menu():
     number_cakes = 12
     for count in range (number_cakes):
         print("{} {} ${:.2f}" .format(count+1,cake_names[count],cake_prices[count]))
 
+def order_cake():
+# ask for total number of cakes for order
+    num_cakes = 0
+    while True: 
+        try: 
+            num_cakes = int(input("How many cakes do you want to order? "))
+            if num_cakes >= 1 and num_cakes <= 12:
+                break
+            else:
+                print("Your order must be between 1 and 12 ")
+        except ValueError:
+            print("This is not a valid number ")
+            print("Please enter a number between 1 and 12")
+    # choose cake from menu
+    for item in range(num_cakes):
+        while num_cakes > 0:
+            while True:
+                try:
+                    cakes_ordered = int(input("Please choose your cake by entering the number from the menu "))
+                    if cakes_ordered >= 1 and cakes_ordered <= 12:
+                        break
+                    else:
+                        print("Your cake must be between 1 and 12")
+                except ValueError:
+                    print("That is not a valid number")
+                    print("Please enter a number between 1 and 12")
+            cakes_ordered = cakes_ordered-1
+            order_list.append(cake_names[cakes_ordered])
+            order_cost.append(cake_prices[cakes_ordered])
+            print("{} ${:.2f}" .format(cake_names[cakes_ordered],cake_prices[cakes_ordered]))
+            num_cakes = num_cakes-1
 
 
 
@@ -128,6 +162,7 @@ def main():
     welcome()
     order_type()
     menu()
+    order_cake()
     
 
 
