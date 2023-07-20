@@ -141,11 +141,7 @@ def order_cake():
             print("{} ${:.2f}" .format(cake_names[cakes_ordered],cake_prices[cakes_ordered]))
             num_cakes = num_cakes-1
 
-
-
-
-
-
+# print order - including if order is for del or click and collect
 
 
 
