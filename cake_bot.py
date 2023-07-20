@@ -53,6 +53,8 @@ def order_type():
             if delivery >= 1 and delivery <= 2:
                 if delivery == 1:
                     print("Delivery")
+                    #order_list.append("Delivery Charge")
+                    #order_cost.append(9)
                     del_pick = "delivery"
                     delivery_info()
                     break
@@ -150,6 +152,7 @@ def print_order(del_pick):
     if del_pick == "delivery":
         print()
         print("Your order is for Delivery. A $9 delivery charge will apply.")
+        total_cost = total_cost + 9
         print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']} \nCustomer Address: {customer_details['house']} {customer_details['street']} {customer_details['suburb']}")
     elif del_pick == "click and collect":
         print("Your order is for Click and Collect")
