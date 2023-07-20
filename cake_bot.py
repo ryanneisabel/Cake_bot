@@ -43,6 +43,7 @@ def welcome():
 
 # menu for click and collect or delivery
 def order_type():
+    del_pick = ""
     print("Do you want your cake to be delivered, or will you be picking it up?")
 
     print("For delivery, enter 1")
@@ -54,11 +55,13 @@ def order_type():
             if delivery >= 1 and delivery <= 2:
                 if delivery == 1:
                     print("Delivery")
+                    del_pick = "delivery"
                     delivery_info()
                     break
 
                 elif delivery == 2:
                     print("Click and Collect")
+                    del_pick = "click and collect"
                     clickandcollect_info()
                     break
             else:
@@ -142,6 +145,26 @@ def order_cake():
             num_cakes = num_cakes-1
 
 # print order - including if order is for del or click and collect
+def print_order(del_pick):
+    print()
+    total_cost = sum(order_cost)
+    print("Customer Details")
+    if del_pick == "delivery":
+        print()
+        print("Your order is for Delivery. A $9 delivery charge will apply.")
+        print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']} \nCustomer Address: {customer_details['house']} {customer_details['street']} {customer_details['suburb']}")
+    elif del_pick == "click and collect":
+        print("Your pickup is for Click and Collect")
+        print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']}")
+    print()
+    print("Order Details")
+    count = 0
+    for item in order_list:
+        print("Ordered: {} Cost: ${:.2f}".format(item, order_cost[count]))
+        count = count+1
+    print()
+    print("Total Order Cost")
+    print(f"The total cost of the order is: ${total_cost:.2f}")
 
 
 
@@ -156,9 +179,10 @@ def main():
     '''
 
     welcome()
-    order_type()
+    del_pick = order_type()
     menu()
     order_cake()
+    print_order(del_pick)
     
 
 
