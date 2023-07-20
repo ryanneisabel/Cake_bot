@@ -45,10 +45,8 @@ def welcome():
 def order_type():
     del_pick = ""
     print("Do you want your cake to be delivered, or will you be picking it up?")
-
     print("For delivery, enter 1")
     print("For click and collect, enter 2")
-
     while True:
         try:
             delivery = int(input("Please enter a number "))
@@ -58,7 +56,6 @@ def order_type():
                     del_pick = "delivery"
                     delivery_info()
                     break
-
                 elif delivery == 2:
                     print("Click and Collect")
                     del_pick = "click and collect"
@@ -69,6 +66,7 @@ def order_type():
         except ValueError:
             print("This is not a valid input")
             print("Please enter 1 or 2 ")
+    return del_pick
 
 # delivery information - name, address, and phone number
 def delivery_info():
@@ -154,7 +152,7 @@ def print_order(del_pick):
         print("Your order is for Delivery. A $9 delivery charge will apply.")
         print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']} \nCustomer Address: {customer_details['house']} {customer_details['street']} {customer_details['suburb']}")
     elif del_pick == "click and collect":
-        print("Your pickup is for Click and Collect")
+        print("Your order is for Click and Collect")
         print(f"Customer Name: {customer_details['name']} \nCustomer Phone: {customer_details['phone']}")
     print()
     print("Order Details")
@@ -180,6 +178,7 @@ def main():
 
     welcome()
     del_pick = order_type()
+    print(del_pick)
     menu()
     order_cake()
     print_order(del_pick)
