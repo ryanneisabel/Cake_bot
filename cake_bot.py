@@ -1,5 +1,6 @@
 import random
 from random import randint
+import sys
 
 # list of random names
 names = ["Nadia","Alissa","Courtney","Mia","Emma","Jasper","Loui","Harry","Joe","Zachary"]
@@ -187,17 +188,48 @@ def confirm_cancel():
                     print("Order confirmed")
                     print("Your order has been sent to our bakery")
                     print("Your cake  will be with you shortly")
+                    print()
                     break
                 elif confirm == 2:
                     print()
                     print("Your order has been cancelled")
                     print("You can restart your order or exit the BOT")
+                    print()
                     break
             else:
                 print("The number must be 1 or 2 ")
         except ValueError:
             print("This is not a valid number")
             print("Please enter 1 or 2 ")
+
+# option for new order or exit BOT
+def new_exit():
+    print("Would you like to make another order or exit?")
+    print("To make another order, please enter 1")
+    print("To exit the BOT, please enter 2")
+    while True:
+        try:
+            confirm = int(input("Please enter a number "))
+            if confirm >= 1 and confirm <= 2:
+                if confirm == 1:
+                    print("New Order")
+                    print()
+                    order_list.clear()
+                    order_cost.clear()
+                    customer_details.clear()
+                    main()  
+                    break
+
+                elif confirm == 2:
+                    print("Exit")
+                    sys.exit
+                    break
+            else: 
+                print("The number must be 1 or 2 ")
+        except ValueError: 
+            print("This is not a valid number")
+            print("Please enter 1 or 2")
+
 
 
 
@@ -221,6 +253,7 @@ def main():
     order_cake()
     print_order(del_pick)
     confirm_cancel()
+    new_exit()
     
 
 
