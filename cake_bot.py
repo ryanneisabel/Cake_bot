@@ -2,6 +2,10 @@ import random
 from random import randint
 import sys
 
+# constants
+LOW = 1
+HIGH = 2
+
 # list of random names
 names = ["Nadia","Alissa","Courtney","Mia","Emma","Jasper","Loui","Harry","Joe","Zachary"]
 # list of cake names
@@ -18,6 +22,19 @@ order_cost = []
 
 # customer details dictionary
 customer_details = {}
+
+# validates inputs to check if they are an integer 
+def val_int(low,high,question):
+    while True:
+        try:
+            num = int(input(question))
+            if num >= low and num <= high:
+                return num
+            else:
+                print(f"The number must be between {low} and {high} ")
+        except ValueError:
+            print("This is not a valid number")
+            print(f"The number must be between {low} and {high} ")
 
 # validates input to check if left blank
 def not_blank(question):
@@ -45,31 +62,26 @@ def welcome():
 # menu for click and collect or delivery
 def order_type():
     del_pick = ""
+    question = (f"Please enter a number between {LOW} and {HIGH} ")
     print("Do you want your cake to be delivered, or will you be picking it up?")
-    print("For delivery, enter 1")
-    print("For click and collect, enter 2")
-    while True:
-        try:
-            delivery = int(input("Please enter a number "))
-            if delivery >= 1 and delivery <= 2:
-                if delivery == 1:
-                    print("Delivery")
-                    #order_list.append("Delivery Charge")
-                    #order_cost.append(9)
-                    del_pick = "delivery"
-                    delivery_info()
-                    break
-                elif delivery == 2:
-                    print("Click and Collect")
-                    del_pick = "click and collect"
-                    clickandcollect_info()
-                    break
-            else:
-                print("The number must be 1 or 2")
-        except ValueError:
-            print("This is not a valid input")
-            print("Please enter 1 or 2 ")
+    print("For delivery, please enter 1")
+    print("For click and collect, please enter 2")
+    delivery = val_int(LOW,HIGH,question)
+    if delivery == 1:
+        print()
+        print("Delivery")
+        print()
+        del_pick = "delivery"
+        delivery_info()
+    elif delivery == 2:
+        print()
+        print("Click and Collect")
+        print()
+        del_pick = "click and collect"
+        clickandcollect_info()
     return del_pick
+
+   
 
 # delivery information - name, address, and phone number
 def delivery_info():
@@ -254,6 +266,7 @@ def main():
     print_order(del_pick)
     confirm_cancel()
     new_exit()
+
     
 
 
