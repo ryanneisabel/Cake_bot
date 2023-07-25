@@ -139,6 +139,7 @@ def order_cake():
     # choose cake from menu
     for item in range(num_cakes):
         while num_cakes > 0:
+            print()
             print("Please choose your cakes from the menu above ")
             question = (f"Please enter a number between {NUM_LOW} and {NUM_HIGH} ")
             cakes_ordered = val_int(NUM_LOW,NUM_HIGH,question)
@@ -176,38 +177,30 @@ def print_order(del_pick):
     print()
     print("Total Order Cost")
     print(f"The total cost of the order is: ${total_cost:.2f}")
+    print()
 
 # ability to confirm or cancel order
 def confirm_cancel():
-    print()
+    question = (f"Pleaes enter a number between {LOW} and {HIGH} ")
     print("Please confirm your order")
     print("To confirm, please enter 1")
     print("To cancel , please enter 2")
-    while True:
-        try:
-            confirm = int(input("Please enter a number "))
-            if confirm >= 1 and confirm <= 2:
-                if confirm == 1:
-                    print()
-                    print("Order confirmed")
-                    print("Your order has been sent to our bakery")
-                    print("Your cake  will be with you shortly")
-                    print()
-                    break
-                elif confirm == 2:
-                    print()
-                    print("Your order has been cancelled")
-                    print("You can restart your order or exit the BOT")
-                    print()
-                    break
-            else:
-                print("The number must be 1 or 2 ")
-        except ValueError:
-            print("This is not a valid number")
-            print("Please enter 1 or 2 ")
+    confirm = val_int(LOW,HIGH,question)
+    if confirm == 1: 
+        print()
+        print("Order confirmed")
+        print("Your order has been sent to our bakery")
+        print("Your cake(s) will be with you shortly")
+        new_exit()
+    elif confirm == 2: 
+        print()
+        print("Your order has been cancelled")
+        print("You can restart your order or exit the BOT")
+        new_exit()
 
 # option for new order or exit BOT
 def new_exit():
+    print()
     print("Would you like to make another order or exit?")
     print("To make another order, please enter 1")
     print("To exit the BOT, please enter 2")
@@ -216,6 +209,7 @@ def new_exit():
             confirm = int(input("Please enter a number "))
             if confirm >= 1 and confirm <= 2:
                 if confirm == 1:
+                    print()
                     print("New Order")
                     print()
                     order_list.clear()
