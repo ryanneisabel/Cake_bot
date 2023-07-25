@@ -125,32 +125,24 @@ def menu():
     for count in range (number_cakes):
         print("{} {} ${:.2f}" .format(count+1,cake_names[count],cake_prices[count]))
 
+# choose total number of cakes - max 12
 def order_cake():
-# ask for total number of cakes for order
+    # ask for total number of cakes for order
+    print()
+    print("There is a maximum limit of 12 cakes per order.")
     num_cakes = 0
-    while True: 
-        try: 
-            num_cakes = int(input("How many cakes do you want to order? "))
-            if num_cakes >= 1 and num_cakes <= 12:
-                break
-            else:
-                print("Your order must be between 1 and 12 ")
-        except ValueError:
-            print("This is not a valid number ")
-            print("Please enter a number between 1 and 12")
+    NUM_LOW = 1
+    NUM_HIGH = 12
+    question = (f"Please enter a number between {NUM_LOW} and {NUM_HIGH} ")
+    print("How many cakes would you like to order? ")
+    num_cakes = val_int(NUM_LOW,NUM_HIGH,question)
     # choose cake from menu
     for item in range(num_cakes):
         while num_cakes > 0:
-            while True:
-                try:
-                    cakes_ordered = int(input("Please choose your cake by entering the number from the menu "))
-                    if cakes_ordered >= 1 and cakes_ordered <= 12:
-                        break
-                    else:
-                        print("Your cake must be between 1 and 12")
-                except ValueError:
-                    print("That is not a valid number")
-                    print("Please enter a number between 1 and 12")
+            print("Please choose your cakes from the menu above ")
+            question = (f"Please enter a number between {NUM_LOW} and {NUM_HIGH} ")
+            cakes_ordered = val_int(NUM_LOW,NUM_HIGH,question)
+
             cakes_ordered = cakes_ordered-1
             order_list.append(cake_names[cakes_ordered])
             order_cost.append(cake_prices[cakes_ordered])
