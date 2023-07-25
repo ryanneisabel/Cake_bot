@@ -23,7 +23,7 @@ order_cost = []
 # customer details dictionary
 customer_details = {}
 
-# validates inputs to check if they are an integer 
+# validates input to check if they are an integer 
 def val_int(low,high,question):
     while True:
         try:
@@ -35,6 +35,16 @@ def val_int(low,high,question):
         except ValueError:
             print("This is not a valid number")
             print(f"The number must be between {low} and {high} ")
+
+# validates input to check if they are alphabetical
+def check_string(question):
+    while True:
+        response = input(question)
+        x = response.isalpha()
+        if x == False:
+            print("Input must only contain letters")
+        else: 
+            return response.title()
 
 # validates input to check if left blank
 def not_blank(question):
@@ -86,7 +96,7 @@ def order_type():
 # delivery information - name, address, and phone number
 def delivery_info():
     question = ("Please enter your name ")
-    customer_details['name'] = not_blank(question )
+    customer_details['name'] = check_string(question)
     print(customer_details['name'])
 
     question = ("Please enter your phone number ")
@@ -99,12 +109,12 @@ def delivery_info():
 
 
     question = ("Please enter your street name ")
-    customer_details['street'] = not_blank(question )
+    customer_details['street'] = check_string(question)
     print(customer_details['street'])
 
 
     question = ("Please enter your suburb ")
-    customer_details['suburb'] = not_blank(question )
+    customer_details['suburb'] = check_string(question)
     print(customer_details['suburb'])
     print(customer_details)
       
@@ -112,7 +122,7 @@ def delivery_info():
 # click and collect information - name and phone number
 def clickandcollect_info():
     question = ("Please enter your name ")
-    customer_details['name'] = not_blank(question )
+    customer_details['name'] = check_string(question)
     print(customer_details['name'])
 
     question = ("Please enter your phone number ")
