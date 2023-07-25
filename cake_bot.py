@@ -2,6 +2,8 @@ import random
 from random import randint
 import sys
 
+# bugs - prints delivery above cake menu
+
 # constants
 LOW = 1
 HIGH = 2
@@ -108,9 +110,8 @@ def order_type():
         print()
         del_pick = "click and collect"
         clickandcollect_info()
-    return del_pick
 
-   
+    return del_pick
 
 # delivery information - name, address, and phone number
 def delivery_info():
@@ -126,17 +127,14 @@ def delivery_info():
     customer_details['house'] = not_blank(question )
     print(customer_details['house'])
 
-
     question = ("Please enter your street name ")
     customer_details['street'] = check_string(question)
     print(customer_details['street'])
-
 
     question = ("Please enter your suburb ")
     customer_details['suburb'] = check_string(question)
     print(customer_details['suburb'])
     print(customer_details)
-      
 
 # click and collect information - name and phone number
 def clickandcollect_info():
