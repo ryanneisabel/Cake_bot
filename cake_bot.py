@@ -134,7 +134,6 @@ def delivery_info():
     question = ("Please enter your suburb ")
     customer_details['suburb'] = check_string(question)
     print(customer_details['suburb'])
-    print(customer_details)
 
 # click and collect information - name and phone number
 def clickandcollect_info():
@@ -145,7 +144,6 @@ def clickandcollect_info():
     question = ("Please enter your phone number ")
     customer_details['phone'] = check_phone(question,PH_LOW,PH_HIGH)
     print(customer_details['phone'])
-    print(customer_details)
 
 def menu():
     number_cakes = 12
