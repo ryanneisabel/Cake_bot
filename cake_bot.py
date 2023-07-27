@@ -165,7 +165,7 @@ def order_cake():
     for item in range(num_cakes):
         while num_cakes > 0:
             print()
-            print("Please choose your cakes from the menu above ")
+            print("Please choose your cake(s) from the menu above ")
             question = (f"Please enter a number between {NUM_LOW} and {NUM_HIGH} ")
             cakes_ordered = val_int(NUM_LOW,NUM_HIGH,question)
 
@@ -219,7 +219,7 @@ def confirm_cancel():
         new_exit()
     elif confirm == 2: 
         print()
-        print("Your order has been cancelled")
+        print("Order cancelled")
         print("You can restart your order or exit the BOT")
         new_exit()
 
