@@ -75,7 +75,7 @@ def check_phone(question,PH_LOW,PH_HIGH):
             else:
                 print("NZ phone numbers have between 7 and 10 digits")
         except ValueError:
-            print("Input must only contain numbers ")
+            print("Please enter a number ")
 
 # welcome message with random name
 def welcome():
@@ -89,13 +89,12 @@ def welcome():
     print("== Welcome to Cloud Cakes ==")
     print("== My name is", name," ==")
     print("== I will be assisting you in picking cakes today! ==")
-    print()
 
 # menu for click and collect or delivery
 def order_type():
     del_pick = ""
     question = (f"Please enter a number between {LOW} and {HIGH} ")
-    print("How would you like to receive your cake?")
+    print("Do you want your cake to be delivered, or will you be picking it up?")
     print("For delivery, please enter 1")
     print("For click and collect, please enter 2")
     delivery = val_int(LOW,HIGH,question)
