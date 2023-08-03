@@ -21,7 +21,7 @@ HIGH = 2  # universal variable, sets constant HIGH = 2
 PH_LOW = 7  # sets minimum digits for standard NZ phone number input
 # constant used in phone number
 PH_HIGH = 10  # sets maximum digits for standard NZ phone number input
-# constant used in delivery information and click and collect information
+# constant used in phone number
 
 # list of random names
 names = ["Nadia", "Alissa", "Courtney", "Mia", "Emma",
@@ -72,7 +72,7 @@ def val_int(LOW, HIGH, question):
             # if the input is not an integer
             # except code will print error message
             # and ask for input again
-            # prints error message statement
+            # prints error message
             print("This is not a valid number")
             # prints instructions
             print(f"The number must be between {LOW} and {HIGH} ")
@@ -197,7 +197,7 @@ def order_type():
         print()  # prints blank space
         # sets order type variable to delivery
         del_pick = "delivery"
-        # calls function delivery_info
+        # runs function delivery_info
         delivery_info()
     elif delivery == 2:
         print()  # prints blank space
@@ -206,7 +206,7 @@ def order_type():
         print()  # prints blank space
         # sets order type variable to click and collect
         del_pick = "click and collect"
-        # calls function clickandcollect_info
+        # runs function clickandcollect_info
         clickandcollect_info()
 
     # returns del_pick if input is valid integer
@@ -477,9 +477,11 @@ def new_exit():
         # prints selected option - new order
         print("New Order")
         print()
-        # clears data from all lists
+        # clears all data in order_list
         order_list.clear()
+        # clears all data in order_cost
         order_cost.clear()
+        # clears all data in customer_details dictionary
         customer_details.clear()
         # runs main function
         main()
@@ -487,11 +489,13 @@ def new_exit():
         print()
         # prints selected option - exit (bot)
         print("Exit")
-        # clears data from all lists
+        # clears all data in order_list list
         order_list.clear()
+        # clears all data in order_cost list
         order_cost.clear()
+        # clears all data in customer_details dictionary
         customer_details.clear()
-        # uses sys to exit program
+        # uses system to exit program
         sys.exit
 
 
@@ -501,22 +505,27 @@ def main():
     Parameters: None
     Returns: None
     '''
-    # welcome function to greet the user
+    # runs welcome function
+    # to greet the user
     welcome()
-    # order_type function asks the user whether their order is for
-    # delivery or click and collect
+    # runs order_type function
+    # to ask the user whether their order is for delivery or click and collect
     # calls either delivery_info or clickandcollect_info function
     del_pick = order_type()
-    # menu function prints list of index numbers and cakes with prices
+    # runs menu function
+    # prints list of index numbers and cakes with prices
     menu()
-    # order_cake functon allows user to choose how many cakes they are going to order
+    # runs order_cake functon
+    # allows user to choose how many cakes they are going to order
     # also allows user to choose their cake(s) from the menu
     order_cake()
-    # print_order function prints order details
+    # runs print_order function
+    # prints order details
     # includes customer details, cakes ordered, and total cost details
     # if del_pick variable is for delivery, a $9 delivery charge may apply
     print_order(del_pick)
-    # confirm_cancel function allows user to confirm or cancel order
+    # runs confirm_cancel function
+    # allows user to confirm or cancel order
     confirm_cancel()
 
 
