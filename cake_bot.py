@@ -3,12 +3,12 @@
 
 
 # modules
+# imports module for generating random variables
 import random
-# imports random module for generating variables
+# allows random module to pick random integers
 from random import randint
-# variables are random integers
+# imports module for system-related functions
 import sys
-# imports system module to provide functions and variables
 
 
 # constants
@@ -18,16 +18,16 @@ LOW = 1  # universal variable, sets constant LOW = 1
 HIGH = 2  # universal variable, sets constant HIGH = 2
 # constant used in order type, confirm or cancel order,
 # and start another order or exit bot
-PH_LOW = 7  # sets minimum digits to input for standard NZ phone number
+PH_LOW = 7  # sets minimum digits for standard NZ phone number input
 # constant used in phone number
-PH_HIGH = 10  # sets maximum digits to input for standard NZ phone number
-# constant used in phone number
+PH_HIGH = 10  # sets maximum digits for standard NZ phone number input
+# constant used in delivery information and click and collect information
 
 # list of random names
 names = ["Nadia", "Alissa", "Courtney", "Mia", "Emma",
          "Jasper", "Loui", "Harry", "Joe", "Zachary"]
 # list of cake names
-# these are the types of cake sold at the bakery
+# these are the names of the cakes sold at the bakery
 cake_names = ['Vanilla Cake', 'Chocolate Cake', 'Strawberry Cake', 'Caramel Cake',
               'Red Velvet Cake', 'Carrot Cake', 'Lemon Cake', 'Ice Cream Cake',
               'Vanilla Mousse Cake', 'Chocolate Mousse Cake', 'Black Forest Cake', 'Blueberry Cake']
@@ -54,12 +54,12 @@ customer_details = {}
 def val_int(LOW, HIGH, question):
     # takes constants LOW and HIGH as parameters
     # also takes question as parameter
-    # returns input if integer is valid
+    # returns num if input is valid integer
     while True:
         # sets up while loop
         try:
-            # the program will print the statement
-            num = int(input(question))  # asks for input (integer)
+            # asks user for input (integer)
+            num = int(input(question))
             if num >= LOW and num <= HIGH:
                 # if num is equal to or in between num boundaries
                 # return num
@@ -72,10 +72,10 @@ def val_int(LOW, HIGH, question):
             # if the input is not an integer
             # except code will print error message
             # and ask for input again
-            print("This is not a valid number")
             # prints error message statement
+            print("This is not a valid number")
+            # prints instructions
             print(f"The number must be between {LOW} and {HIGH} ")
-            # prints instruction statement
 
 
 # defines function as check_string
@@ -87,7 +87,7 @@ def check_string(question):
     # returns response in title class if valid
     while True:
         # sets up while loop
-        # asks for input (string)
+        # asks user for input (string)
         response = input(question)
         # checks that input is alphabetical
         x = response.isalpha()
@@ -96,7 +96,7 @@ def check_string(question):
             # prints error message
             print("Input must only contain letters")
         else:
-            # returns input in title class
+            # returns valid input in title class
             return response.title()
 
 
@@ -122,7 +122,7 @@ def not_blank(question):
 
 
 # defines function as check_phone
-# validates phone number
+# validates phone number if valid input is within boundaries
 
 
 def check_phone(question, PH_LOW, PH_HIGH):
@@ -186,6 +186,7 @@ def order_type():
     # prints instructions
     print("For delivery, please enter 1")
     print("For click and collect, please enter 2")
+    print("Please note that a $9 delivery charge may apply for delivery")
     print()  # prints blank space
     # asks for valid input (integer) within boundaries
     delivery = val_int(LOW, HIGH, question)
@@ -208,7 +209,7 @@ def order_type():
         # calls function clickandcollect_info
         clickandcollect_info()
 
-    # returns del_pick if input is valid
+    # returns del_pick if input is valid integer
     return del_pick
 
 # defines function as delivery_info
@@ -216,7 +217,7 @@ def order_type():
 
 
 def delivery_info():
-    # takes constansts PH_LOW and PH_HIGH as parameters
+    # takes constansts PH_LOW and PH_HIGH as parameters for check_phone
     # also takes question as parameter
     # no returns
 
@@ -224,6 +225,7 @@ def delivery_info():
     # information is stored under 'name'
     # defines question
     question = ("Please enter your name ")
+    # asks user for input (string)
     customer_details['name'] = check_string(question)
     # prints customer's name
     print(customer_details['name'])
@@ -232,7 +234,7 @@ def delivery_info():
     # information is stored under 'phone'
     # defines question
     question = ("Please enter your phone number ")
-    # asks for input
+    # asks user for input (integer within boundaries)
     customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)
     # prints customer's phone number
     print(customer_details['phone'])
@@ -241,7 +243,7 @@ def delivery_info():
     # information is stored under 'house'
     # defines question
     question = ("Please enter your house number ")
-    # asks for input
+    # asks user for input (not blank)
     customer_details['house'] = not_blank(question)
     # prints customer's house number
     print(customer_details['house'])
@@ -250,7 +252,7 @@ def delivery_info():
     # information is stored under 'street'
     # defines question
     question = ("Please enter your street name ")
-    # asks for input
+    # asks user for input (string)
     customer_details['street'] = check_string(question)
     # prints customer's street name
     print(customer_details['street'])
@@ -259,7 +261,7 @@ def delivery_info():
     # information is stored under 'suburb'
     # defines question
     question = ("Please enter your suburb ")
-    # asks for input
+    # asks user for input (string)
     customer_details['suburb'] = check_string(question)
     # prints customer's suburb
     print(customer_details['suburb'])
@@ -270,7 +272,7 @@ def delivery_info():
 
 
 def clickandcollect_info():
-    # takes constants PH_LOW and PH_HIGH as parameters
+    # takes constants PH_LOW and PH_HIGH as parameters for check_phone
     # also takes question as parameter
     # no returns
 
@@ -278,18 +280,18 @@ def clickandcollect_info():
     # information is stored under 'name'
     # defines question
     question = ("Please enter your name ")
-    # asks for input
+    # asks user for input (string)
     customer_details['name'] = check_string(question)
-    # information is stored under 'name'
+    # prints customer's name
     print(customer_details['name'])
 
     # asks for user's phone number to store in customer_details dictionary
     # information is stored under 'phone'
     # defines question
     question = ("Please enter your phone number ")
-    # asks for input
+    # asks user for input (integer within boundaries)
     customer_details['phone'] = check_phone(question, PH_LOW, PH_HIGH)
-    # information is stored under 'phone'
+    # prints customer's phone number
     print(customer_details['phone'])
     print()  # prints blank space
 
@@ -314,12 +316,14 @@ def menu():
 
 def order_cake():
     print()  # prints blank space
-    # prints statement to let user know about the boundary
+    # prints statement to let user know about the order limit/boundary
     print("There is a maximum limit of 12 cakes per order.")
     # num_cakes variable is set to 0
     num_cakes = 0
     # new constants set for function
+    # minimum amount of cakes allowed for order
     NUM_LOW = 1
+    # maximum amount of cakes allowed for order
     NUM_HIGH = 12
     # choosing how many cakes for order
     # defines question
@@ -334,22 +338,24 @@ def order_cake():
             # sets while loop until order is finished, or until num_cakes = 0
             print()  # prints blank space
             print("Please choose your cake(s) from the menu above ")
+            # defines question
             question = (
                 f"Please enter a number between {NUM_LOW} and {NUM_HIGH} ")
-            # asks the user for input (integer)
+            # asks user for input (integer)
             cakes_ordered = val_int(NUM_LOW, NUM_HIGH, question)
 
             # organises cake index to match list index
             cakes_ordered = cakes_ordered-1
             # appends the selected cake to order list
             order_list.append(cake_names[cakes_ordered])
-            # appends the selected cake to order list
+            # appends the selected cake's price to order cost list
             order_cost.append(cake_prices[cakes_ordered])
             # prints the cake ordered with corresponding price
             # formatted to print cake name and price with 2 decimal places
             print("{} ${:.2f}" .format(
                 cake_names[cakes_ordered], cake_prices[cakes_ordered]))
-            # decreases nuber of cakes in variable for every input
+            # decreases number of cakes in num_cakes after every input
+            # breaks loop when num_cakes = 0
             num_cakes = num_cakes-1
 
 # defines function as print_order
@@ -360,10 +366,11 @@ def print_order(del_pick):
     # takes del_pick as parameters
     # no returns
     print()  # prints blank space
-    # calculates the total cost of all cakes ordered
+    # calculates the total cost of all cakes ordered in order_cost list
     total_cost = sum(order_cost)
     # prints a header for customer details
     print("Customer Details")
+    # if user previously chose delivery in order_type
     if del_pick == "delivery":
         # prints del_pick variable from order_type function
         print("Your order is for Delivery.")
@@ -371,8 +378,8 @@ def print_order(del_pick):
         print(
             f"Customer Name: {customer_details['name']} \
              \nCustomer Phone: {customer_details['phone']} \
-             \nCustomer Address: {customer_details['house']} \
-             {customer_details['street']} {customer_details['suburb']}")
+             \nCustomer Address: {customer_details['house']} {customer_details['street']} {customer_details['suburb']}")
+    # if user previously chose click and collect in order_type
     elif del_pick == "click and collect":
         # prints del_pick variable from order_type function
         print("Your order is for Click and Collect")
@@ -381,7 +388,7 @@ def print_order(del_pick):
             f"Customer Name: {customer_details['name']} \
                 \nCustomer Phone: {customer_details['phone']}")
     print()  # prints blank space
-    # prints heading for order details
+    # prints header for order details
     print("Order Details")
     # sets count variable to 0
     count = 0
@@ -392,6 +399,7 @@ def print_order(del_pick):
         # starts count at 1
         count = count+1
     print()  # prints blank space
+    # delivery charge for delivery
     if del_pick == "delivery":
         # if there are 5 or more items stored in order_list
         if len(order_list) >= 5:
@@ -406,7 +414,7 @@ def print_order(del_pick):
             # adds a $9 delivery charge to total cost
             total_cost = total_cost + 9
     print()  # prints blank space
-    # prints heading for total order cost
+    # prints header for total order cost
     print("Total Order Cost")
     # prints the total cost of order and formats it to 2 decimal places
     # adds $9 delivery charge to total cost if appropriate
@@ -422,7 +430,9 @@ def confirm_cancel():
     # takes constants LOW and HIGH as parameters
     # also takes question as parameter
     # no returns
-    question = (f"Pleaes enter a number between {LOW} and {HIGH} ")
+    # defines question
+    question = (f"Please enter a number between {LOW} and {HIGH} ")
+    # prints instructions
     print("Please confirm your order")
     print("To confirm, please enter 1")
     print("To cancel , please enter 2")
@@ -433,20 +443,20 @@ def confirm_cancel():
         # prints statement confirming order
         print("Order confirmed")
         print("Your order has been sent to our bakery")
-        print("Your cake(s) will be with you shortly")
-        # proceeds to next function
+        print("Your cake(s) will be with you shortly !")
+        # runs new_exit function
         new_exit()
     elif confirm == 2:
         print()  # prints blank space
         # prints statement cancelling order
         print("Order cancelled")
         print("You can restart your order or exit the BOT")
-        # proceeds to next function
+        # runs new_exit function
         new_exit()
 
 
 # defines function as new_exit
-# allows user to make a new order or exit the BOT
+# allows user to start a new order or exit the BOT
 
 
 def new_exit():
@@ -454,11 +464,13 @@ def new_exit():
     # also takes question as parameter
     # no returns
     print()  # prints blank space
+    # defines question
     question = (f"Please enter a number between {LOW} and {HIGH} ")
+    # prints instructions
     print("Would you like to make another order or exit?")
     print("To make another order, please enter 1")
     print("To exit the BOT, please enter 2")
-    # asks user for input
+    # asks user for input (integer)
     confirm = val_int(LOW, HIGH, question)
     if confirm == 1:
         print()
@@ -469,7 +481,7 @@ def new_exit():
         order_list.clear()
         order_cost.clear()
         customer_details.clear()
-        # returns to main
+        # runs main function
         main()
     elif confirm == 2:
         print()
@@ -479,7 +491,7 @@ def new_exit():
         order_list.clear()
         order_cost.clear()
         customer_details.clear()
-        # exits program
+        # uses sys to exit program
         sys.exit
 
 
@@ -489,13 +501,13 @@ def main():
     Parameters: None
     Returns: None
     '''
-    # welcome function greets the user
+    # welcome function to greet the user
     welcome()
-    # order_type function asks the user whether their delivery is for
+    # order_type function asks the user whether their order is for
     # delivery or click and collect
     # calls either delivery_info or clickandcollect_info function
     del_pick = order_type()
-    # menu function prints list of cakes with prices
+    # menu function prints list of index numbers and cakes with prices
     menu()
     # order_cake functon allows user to choose how many cakes they are going to order
     # also allows user to choose their cake(s) from the menu
