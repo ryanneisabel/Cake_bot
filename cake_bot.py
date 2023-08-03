@@ -409,6 +409,7 @@ def print_order(del_pick):
     # prints heading for total order cost
     print("Total Order Cost")
     # prints the total cost of order and formats it to 2 decimal places
+    # adds $9 delivery charge to total cost if appropriate
     print(f"The total cost of the order is: ${total_cost:.2f}")
     print()  # prints blank space
 
@@ -494,6 +495,8 @@ def main():
     # delivery or click and collect
     # calls either delivery_info or clickandcollect_info function
     del_pick = order_type()
+    # menu function prints list of cakes with prices
+    menu()
     # order_cake functon allows user to choose how many cakes they are going to order
     # also allows user to choose their cake(s) from the menu
     order_cake()
